@@ -38,12 +38,20 @@
         .bcs-activity-feed-task-new,
         .bcs-activity-feed-comment,
         .bcs-activity-feed-app-activity {
-            margin-top: 20px;
+            padding-top: 20px;
             padding-bottom: 20px;
             border-bottom: 1px solid $bdl-gray-10;
 
             &:first-child .bcs-comment {
                 margin-top: 0;
+            }
+
+            &.bcs-is-focused {
+                margin-right: -25px;
+                margin-left: -25px;
+                padding-right: 25px;
+                padding-left: 25px;
+                background-color: $bdl-box-blue-05;
             }
         }
 
