@@ -103,16 +103,16 @@ class Sidebar extends React.Component<Props, State> {
     }
 
     getUrlPrefix = (pathname: string) => {
-        if (pathname.startsWith(SIDEBAR_VIEW_ACTIVITY)) {
+        if (pathname.startsWith(`/${SIDEBAR_VIEW_ACTIVITY}`)) {
             return SIDEBAR_VIEW_ACTIVITY;
         }
-        if (pathname.startsWith(SIDEBAR_VIEW_DETAILS)) {
+        if (pathname.startsWith(`/${SIDEBAR_VIEW_DETAILS}`)) {
             return SIDEBAR_VIEW_DETAILS;
         }
-        if (pathname.startsWith(SIDEBAR_VIEW_METADATA)) {
+        if (pathname.startsWith(`/${SIDEBAR_VIEW_METADATA}`)) {
             return SIDEBAR_VIEW_METADATA;
         }
-        return '/activity';
+        return SIDEBAR_VIEW_ACTIVITY;
     };
 
     /**
@@ -132,7 +132,7 @@ class Sidebar extends React.Component<Props, State> {
             event.preventDefault();
         }
 
-        history.push(`${urlPrefix}/versions${fileVersionSlug}`);
+        history.push(`/${urlPrefix}/versions${fileVersionSlug}`);
     };
 
     /**
