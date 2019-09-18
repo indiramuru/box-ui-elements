@@ -43,12 +43,11 @@ describe('elements/content-sidebar/SidebarPanels', () => {
         });
 
         describe('activity sidebar', () => {
-            test('should render without deeplink', () => {
+            test('should render default component', () => {
                 const wrapper = getWrapper({ hasActivity: true });
                 expect(wrapper).toMatchSnapshot();
             });
-
-            test('should pass itemType and itemID from url to activity sidebar', () => {
+            test('should render with tasks deeplink', () => {
                 const wrapper = mount(
                     <MemoryRouter initialEntries={['/activity/tasks/12345']} initialIndex={0}>
                         <SidebarPanels hasActivity file={{ id: '1234' }} isOpen />
@@ -59,21 +58,48 @@ describe('elements/content-sidebar/SidebarPanels', () => {
                     activeFeedItemId: '12345',
                 });
             });
-
-            test('should render with versions deeplink', () => {});
+            test('should render with comments deeplink', () => {
+                const wrapper = mount(
+                    <MemoryRouter initialEntries={['/activity/comments/12345']} initialIndex={0}>
+                        <SidebarPanels hasActivity file={{ id: '1234' }} isOpen />
+                    </MemoryRouter>,
+                );
+                expect(wrapper.find('ActivitySidebar').props()).toMatchObject({
+                    activeFeedItemType: 'comment',
+                    activeFeedItemId: '12345',
+                });
+            });
+            test('should render versions with deeplink', () => {
+                const wrapper = mount(
+                    <MemoryRouter initialEntries={['/activity/versions/12345']} initialIndex={0}>
+                        <SidebarPanels hasActivity file={{ id: '1234' }} isOpen hasVersions />
+                    </MemoryRouter>,
+                );
+                expect(wrapper.find('VersionsSidebar').props()).toMatchObject({
+                    versionId: '12345',
+                });
+            });
         });
 
         describe('details sidebar', () => {
-            test('should render without versions deeplink', () => {
+            test('should render default component', () => {
                 const wrapper = getWrapper({ hasDetails: true });
                 expect(wrapper).toMatchSnapshot();
             });
 
-            test('should render with versions deeplink', () => {});
-
             test('should render versions', () => {
                 const wrapper = getWrapper({ hasVersions: true });
                 expect(wrapper).toMatchSnapshot();
+            });
+            test('should render with versions deeplink', () => {
+                const wrapper = mount(
+                    <MemoryRouter initialEntries={['/details/versions/12345']} initialIndex={0}>
+                        <SidebarPanels hasDetails file={{ id: '1234' }} isOpen hasVersions />
+                    </MemoryRouter>,
+                );
+                expect(wrapper.find('VersionsSidebar').props()).toMatchObject({
+                    versionId: '12345',
+                });
             });
         });
 
