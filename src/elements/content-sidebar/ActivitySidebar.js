@@ -31,8 +31,8 @@ import type { TaskCompletionRule, TaskType, TaskNew, TaskUpdatePayload } from '.
 import './ActivitySidebar.scss';
 
 type ExternalProps = {
-    activeFeedItemId?: string,
-    activeFeedItemType?: string,
+    activeFeedEntryId?: string,
+    activeFeedEntryType?: string,
     currentUser?: User,
     getUserProfileUrl?: GetProfileUrlCallback,
     onCommentCreate: Function,
@@ -567,8 +567,8 @@ class ActivitySidebar extends React.PureComponent<Props, State> {
             isDisabled = false,
             onVersionHistoryClick,
             getUserProfileUrl,
-            activeFeedItemId,
-            activeFeedItemType,
+            activeFeedEntryId,
+            activeFeedEntryType,
         } = this.props;
         const {
             currentUser,
@@ -610,8 +610,8 @@ class ActivitySidebar extends React.PureComponent<Props, State> {
                     getUserProfileUrl={getUserProfileUrl}
                     feedItems={feedItems}
                     currentUserError={currentUserError}
-                    activeFeedItemId={activeFeedItemId}
-                    activeFeedItemType={activeFeedItemType}
+                    activeFeedEntryId={activeFeedEntryId}
+                    activeFeedEntryType={activeFeedEntryType}
                 />
             </SidebarContent>
         );

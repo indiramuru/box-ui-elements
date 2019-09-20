@@ -54,8 +54,8 @@ describe('elements/content-sidebar/SidebarPanels', () => {
                     </MemoryRouter>,
                 );
                 expect(wrapper.find('ActivitySidebar').props()).toMatchObject({
-                    activeFeedItemType: 'task',
-                    activeFeedItemId: '12345',
+                    activeFeedEntryType: 'task',
+                    activeFeedEntryId: '12345',
                 });
             });
             test('should render with comments deeplink', () => {
@@ -65,8 +65,8 @@ describe('elements/content-sidebar/SidebarPanels', () => {
                     </MemoryRouter>,
                 );
                 expect(wrapper.find('ActivitySidebar').props()).toMatchObject({
-                    activeFeedItemType: 'comment',
-                    activeFeedItemId: '12345',
+                    activeFeedEntryType: 'comment',
+                    activeFeedEntryId: '12345',
                 });
             });
             test('should render versions with deeplink', () => {
